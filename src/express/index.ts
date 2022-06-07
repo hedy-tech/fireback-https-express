@@ -1,12 +1,22 @@
 import express, { Express, Router } from 'express'
-import { originValidator } from './middleware/cors'
+import corsMiddleware from 'cors'
+import cookieParserMiddleware from 'cookie-parser'
+import bodyParserMiddleware from 'body-parser'
+import { multipartFormDataMiddleware } from './middleware/multipartFormData'
+import { originValidator as originValidatorCreator } from './middleware/cors'
 import { ProvidedOptionsType } from '../types'
+import {
+    securityMiddleware,
+    checkForUserMiddleware,
+} from './middleware/security'
+import { init } from './middleware/mysql'
+
 // TODO: should use rete limiter to prevent denial of service https://lgtm.com/rules/1506065727959/
 
 const defaultOptions: ProvidedOptionsType = {
     cors: true,
     security: true,
-    mysql: false,
+    // mysql: false,
 }
 let expressService: Express | undefined
 
@@ -15,31 +25,20 @@ const prepareOptions = (providedOptions: ProvidedOptionsType) =>
 
 const initMiddleware = (
     service: Express | Router,
-    options: ProvidedOptionsType = {},
+    options: ProvidedOptionsType,
 ) => {
     if (service) {
-        const corsMiddleware = require('cors')
-        const cookieParserMiddleware = require('cookie-parser')
-        const bodyParserMiddleware = require('body-parser')
-        const {
-            multipartFormDataMiddleware,
-        } = require('./middleware/multipartFormData')
-        const {
-            securityMiddleware,
-            checkForUserMiddleware,
-        } = require('./middleware/security')
-
         // PREPARE
         // ==============================================
-        const { cors, security, allowedOrigins } = prepareOptions(options)
+        const { cors, security, allowedOrigins, mysql } =
+            prepareOptions(options)
 
         // INSTALL MIDDLEWARE
         // ==============================================
         if (cors) {
             if (allowedOrigins) {
-                service.use(
-                    corsMiddleware({ origin: originValidator(allowedOrigins) }),
-                )
+                const originValidator = originValidatorCreator(allowedOrigins)
+                service.use(corsMiddleware({ origin: originValidator }))
             } else {
                 service.use(corsMiddleware({ origin: true }))
             }
@@ -54,15 +53,16 @@ const initMiddleware = (
             service.use(checkForUserMiddleware)
         }
 
-        // if (mysql) {
-        //     service.use(mysqlMiddleware)
-        // }
+        if (mysql) {
+            const { mysqlMiddleware } = init(mysql.dbConfig)
+            service.use(mysqlMiddleware)
+        }
     }
 
     return service
 }
 
-const initHttpsService = (options: ProvidedOptionsType = {}): Express => {
+const initHttpsService = (options: ProvidedOptionsType): Express => {
     if (!expressService) {
         // INIT SERVICE
         // ==============================================
@@ -76,7 +76,7 @@ const initHttpsService = (options: ProvidedOptionsType = {}): Express => {
 export const getHttpsService = (options: ProvidedOptionsType = {}): Express =>
     initHttpsService(options)
 
-const useFeature = (path = '/', feature: Router) => {
+const useFeature = (path: string, feature: Router) => {
     if (expressService) {
         expressService.use(path, feature)
     }
@@ -84,7 +84,7 @@ const useFeature = (path = '/', feature: Router) => {
 
 export const initHttpsRoute = (
     path = '/',
-    options = {},
+    options: ProvidedOptionsType = {},
     initAppOptions: ProvidedOptionsType = {},
 ): Router => {
     getHttpsService(initAppOptions)

@@ -1,6 +1,1 @@
-export {} from // initApp,
-// exportFunctions,
-// callableFunction,
-// cronFunction,
-// httpsFunction,
-'./express'
+export { initHttpsRoute } from './express'
