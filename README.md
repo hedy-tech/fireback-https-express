@@ -6,8 +6,8 @@
 </p>
 
 <p align="center">
-    <a href="https://codeclimate.com/github/dev-vortex/fireback-https-express/maintainability"><img src="https://api.codeclimate.com/v1/badges/5419722b298d8f094d55x/maintainability"/></a>
-    <a href="https://codeclimate.com/github/dev-vortex/fireback-https-express/test_coverage"><img src="https://api.codeclimate.com/v1/badges/5419722b298d8f094d55x/test_coverage"/></a>
+    <a href="https://codeclimate.com/github/dev-vortex/fireback-https-express/maintainability"><img src="https://api.codeclimate.com/v1/badges/0cd4b181427cb0287764/maintainability"/></a>
+    <a href="https://codeclimate.com/github/dev-vortex/fireback-https-express/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0cd4b181427cb0287764/test_coverage"/></a>
 </p>
 
 <p align="center">
