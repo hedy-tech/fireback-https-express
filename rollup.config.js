@@ -19,11 +19,17 @@ export default {
     },
     // We usually need to add all the package dependenciies here
     external: [
-        'camelcase',
+        '@types/busboy',
+        '@types/cookie-parser',
+        '@types/express',
+        'body-parser',
+        'busboy',
+        'cookie-parser',
+        'cors',
+        'express',
         'firebase-admin',
         'firebase-functions',
-        'get-caller-file',
-        'glob',
+        'promise-mysql',
     ],
     plugins: [
         typescript({

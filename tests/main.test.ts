@@ -1,5 +1,6 @@
 // Following https://firebase.google.com/docs/functions/unit-testing
 import { expect } from 'chai'
+import { Request, Response, NextFunction } from 'express'
 
 import { initHttpsRoute } from '../src/index'
 
@@ -39,6 +40,19 @@ const hasSecurityMiddleware = (service: any) => {
 const hasCheckForUserMiddleware = (service: any) => {
     const stack: Record<string, any>[] = service.stack
     return !!stack.find(item => item.name === 'checkForUserMiddleware')
+}
+
+const hasCheckForDbMiddleware = (service: any) => {
+    const stack: Record<string, any>[] = service.stack
+    return !!stack.find(item => item.name === 'dbMiddleware')
+}
+
+const dbMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {
+    return next()
 }
 
 describe('fireback-https-express', () => {
@@ -102,18 +116,8 @@ describe('fireback-https-express', () => {
         it('should return the Express Route with minimum setup + Mysql', () => {
             const toTest = initHttpsRoute('/', {
                 cors: false,
-                mysql: {
-                    dbConfig: {
-                        database: 'name',
-                        host: 'local',
-                        user: 'me',
-                        pass: 'pass',
-                        connection_name: 'connection',
-                        socket_path: 'socker',
-                        timezone: 'Stockholm/Europe',
-                    },
-                },
                 security: false,
+                dbMiddleware: dbMiddleware,
             })
             checkIfIsExpressService(toTest)
 
@@ -123,6 +127,7 @@ describe('fireback-https-express', () => {
             expect(hasCorsMiddleware(toTest)).to.false
             expect(hasSecurityMiddleware(toTest)).to.false
             expect(hasCheckForUserMiddleware(toTest)).to.false
+            expect(hasCheckForDbMiddleware(toTest)).to.true
         })
     })
 })

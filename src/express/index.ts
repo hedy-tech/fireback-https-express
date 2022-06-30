@@ -9,14 +9,12 @@ import {
     securityMiddleware,
     checkForUserMiddleware,
 } from './middleware/security'
-import { init } from './middleware/mysql'
 
 // TODO: should use rete limiter to prevent denial of service https://lgtm.com/rules/1506065727959/
 
 const defaultOptions: ProvidedOptionsType = {
     cors: true,
     security: true,
-    // mysql: false,
 }
 let expressService: Express | undefined
 
@@ -30,7 +28,7 @@ const initMiddleware = (
     if (service) {
         // PREPARE
         // ==============================================
-        const { cors, security, allowedOrigins, mysql } =
+        const { cors, security, allowedOrigins, dbMiddleware } =
             prepareOptions(options)
 
         // INSTALL MIDDLEWARE
@@ -53,9 +51,8 @@ const initMiddleware = (
             service.use(checkForUserMiddleware)
         }
 
-        if (mysql) {
-            const { mysqlMiddleware } = init(mysql.dbConfig)
-            service.use(mysqlMiddleware)
+        if (dbMiddleware) {
+            service.use(dbMiddleware)
         }
     }
 

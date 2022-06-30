@@ -1,1 +1,1 @@
-export { initHttpsRoute } from './express'
+export { getHttpsService, initHttpsRoute } from './express'
