@@ -13,8 +13,8 @@ import {
 // TODO: should use rete limiter to prevent denial of service https://lgtm.com/rules/1506065727959/
 
 const defaultOptions: ProvidedOptionsType = {
-    cors: true,
-    security: true,
+    cors: false,
+    security: false,
 }
 let expressService: Express | undefined
 

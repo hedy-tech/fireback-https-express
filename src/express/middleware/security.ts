@@ -50,7 +50,7 @@ export const securityMiddleware = async (
         !req.headers.authorization &&
         !(req.cookies && req.cookies.__session)
     ) {
-        req.user = functions.config().authUser
+        req.user = functions.config().authUser || {}
         log('log', 'EMULATOR MODE DETECTED: User Mocked To', req.user)
         next()
         return
