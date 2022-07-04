@@ -13,7 +13,7 @@ export type MiddlewareMethod = (
     next: NextFunction,
 ) => Promise<void>
 
-export interface MysqlInit {
-    mysqlMiddleware: MiddlewareMethod
-    mysqlSimpleStart: () => Promise<boolean>
+export interface dbInit {
+    dbMiddleware: MiddlewareMethod
+    dbSimpleStart: () => Promise<boolean>
 }
