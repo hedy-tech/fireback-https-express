@@ -60,12 +60,12 @@ describe('fireback-https-express', () => {
         it('should return an Express Route', () => {
             const toTest = initHttpsRoute()
             checkIfIsExpressService(toTest)
-            expect(toTest.stack).to.length(6)
+            expect(toTest.stack).to.length(3)
         })
         it('should return the same Express Route if requested again', () => {
             const toTest = initHttpsRoute()
             checkIfIsExpressService(toTest)
-            expect(toTest.stack).to.length(6)
+            expect(toTest.stack).to.length(3)
         })
 
         it('should return the Express Route with minimum setup', () => {
