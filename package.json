@@ -18,15 +18,17 @@
     "main": "./dist/index",
     "types": "./dist/types/index.d.ts",
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0",
+    "typings": "dist/index",
     "files": [
         "dist"
     ],
     "scripts": {
-        "build": "yarn build:clean && yarn build:bundle && yarn build:types && yarn build:paths",
-        "build:simple": "yarn build:clean && tsc && yarn build:types && yarn build:paths",
+        "build": "yarn build:clean && yarn build:bundle && yarn build:types && yarn build:types_ext && yarn build:paths",
+        "build:simple": "yarn build:clean && tsc && yarn build:types && yarn build:types_ext && yarn build:paths",
         "build:clean": "rimraf dist/*",
         "build:bundle": "rollup -c",
         "build:types": "copyfiles -u 1 \"src/types/*.d.ts\" dist",
+        "build:types_ext": "copyfiles -u 1 \"src/types/*.d.ts\" types",
         "build:paths": "tscpaths -p tsconfig.json -s ./src -o ./dist",
         "test": "mocha",
         "test:watch": "mocha -w",
