@@ -1,5 +1,5 @@
 {
-    "name": "@dev-vortex/fireback-https-express",
+    "name": "@hedy-tech/fireback-https-express",
     "version": "0.0.0-development",
     "description": "Firebase backend https plugin",
     "keywords": [
@@ -13,7 +13,7 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "https://github.com/dev-vortex/fireback-https-express.git"
+        "url": "https://github.com/hedy-tech/fireback-https-express.git"
     },
     "main": "./dist/index",
     "types": "./dist/types/index.d.ts",

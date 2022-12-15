@@ -1,13 +1,13 @@
 <p align="center">
-    <a href="https://travis-ci.com/github/dev-vortex/fireback-https-express"><img src="https://badgen.net/travis/dev-vortex/fireback-https-express?icon=travis&label=build"/></a>
-    <a href="https://www.npmjs.com/package/@dev-vortex/fireback-https-express"><img src="https://badgen.net/npm/v/@dev-vortex/fireback-https-express?icon=npm&label"/></a>
-    <a href="https://www.npmjs.com/package/@dev-vortex/fireback-https-express"><img src="https://badgen.net/npm/license/@dev-vortex/fireback-https-express?icon=npm"/></a> 
-    <a href="https://www.npmjs.com/package/@dev-vortex/fireback-https-express"><img src="https://badgen.net/npm/types/@dev-vortex/fireback-https-express?icon=typescript"/></a> 
+    <a href="https://travis-ci.com/github/hedy-tech/fireback-https-express"><img src="https://badgen.net/circleci/github/hedy-tech/fireback-https-express?icon=travis&label=build"/></a>
+    <a href="https://www.npmjs.com/package/@hedy-tech/fireback-https-express"><img src="https://badgen.net/npm/v/@hedy-tech/fireback-https-express?icon=npm&label"/></a>
+    <a href="https://www.npmjs.com/package/@hedy-tech/fireback-https-express"><img src="https://badgen.net/npm/license/@hedy-tech/fireback-https-express?icon=npm"/></a> 
+    <a href="https://www.npmjs.com/package/@hedy-tech/fireback-https-express"><img src="https://badgen.net/npm/types/@hedy-tech/fireback-https-express?icon=typescript"/></a> 
 </p>
 
 <p align="center">
-    <a href="https://codeclimate.com/github/dev-vortex/fireback-https-express/maintainability"><img src="https://api.codeclimate.com/v1/badges/0cd4b181427cb0287764/maintainability"/></a>
-    <a href="https://codeclimate.com/github/dev-vortex/fireback-https-express/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0cd4b181427cb0287764/test_coverage"/></a>
+    <a href="https://codeclimate.com/github/hedy-tech/fireback-https-express/maintainability"><img src="https://api.codeclimate.com/v1/badges/117a9e823774831eb33e/maintainability"/></a>
+    <a href="https://codeclimate.com/github/hedy-tech/fireback-https-express/test_coverage"><img src="https://api.codeclimate.com/v1/badges/117a9e823774831eb33e/test_coverage"/></a>
 </p>
 
 <p align="center">
@@ -20,13 +20,13 @@ This package aims to assist the firebase backend helper with a solution in expre
 
 ## Installation
 ```
-yarn add @dev-vortex/fireback-https-express
+yarn add @hedy-tech/fireback-https-express
 ```
 
 or
 
 ```
-npm install @dev-vortex/fireback-https-express
+npm install @hedy-tech/fireback-https-express
 ```
 
 ## Configuration
