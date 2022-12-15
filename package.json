@@ -10,7 +10,7 @@
         "typescript"
     ],
     "author": "Joao Correia <joao@correia.pw> (https://joao.correia.pw)",
-    "license": "ISC",
+    "license": "AGPL",
     "repository": {
         "type": "git",
         "url": "https://github.com/hedy-tech/fireback-https-express.git"
