@@ -6,8 +6,8 @@
 </p>
 
 <p align="center">
-    <a href="https://codeclimate.com/github/hedy-tech/fireback-https-express/maintainability"><img src="https://api.codeclimate.com/v1/badges/0cd4b181427cb0287764/maintainability"/></a>
-    <a href="https://codeclimate.com/github/hedy-tech/fireback-https-express/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0cd4b181427cb0287764/test_coverage"/></a>
+    <a href="https://codeclimate.com/github/hedy-tech/fireback-https-express/maintainability"><img src="https://api.codeclimate.com/v1/badges/117a9e823774831eb33e/maintainability"/></a>
+    <a href="https://codeclimate.com/github/hedy-tech/fireback-https-express/test_coverage"><img src="https://api.codeclimate.com/v1/badges/117a9e823774831eb33e/test_coverage"/></a>
 </p>
 
 <p align="center">
